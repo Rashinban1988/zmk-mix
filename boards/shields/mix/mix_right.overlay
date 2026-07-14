@@ -69,8 +69,10 @@
         status = "okay";
         dr-gpios = <&gpio1 04 (GPIO_ACTIVE_HIGH)>;
 
-        sensitivity = "2x";
-        //sleep;
+        sensitivity = "1x";
+        x-axis-z-min = <10>;
+        y-axis-z-min = <8>;
+        sleep;
         // no-taps;
     };
 };
@@ -79,9 +81,8 @@
     glidepoint_listener {
         compatible = "zmk,input-listener";
         device = <&glidepoint>;
-        input-processors = 
-        <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_xy_scaler 5 2>;
+        input-processors =
+        <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
           scroller {
         layers = <1 2>;
         input-processors =
