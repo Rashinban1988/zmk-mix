@@ -38,23 +38,16 @@
     status = "okay";
     cs-gpios = <&gpio0 24 GPIO_ACTIVE_LOW>;
 
+    /* 左側にトラックパッドは未接続。誤って有効化しないよう disabled で保持 */
     glidepoint: glidepoint@0 {
         compatible = "cirque,pinnacle";
         reg = <0>;
         spi-max-frequency = <1000000>;
-        status = "okay";
+        status = "disabled";
         dr-gpios = <&gpio1 04 (GPIO_ACTIVE_HIGH)>;
 
-        sensitivity = "2x";
-        //invert-x;
+        sensitivity = "1x";
         sleep;
-        // no-taps;
-    };
-};
-/ {
-    glidepoint_listener: glidepoint_listener {
-        compatible = "zmk,input-listener";
-        status = "disabled";
     };
 };
 
